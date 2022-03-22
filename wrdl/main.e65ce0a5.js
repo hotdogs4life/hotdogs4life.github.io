@@ -346,7 +346,13 @@ this.wordle = this.wordle || {}, this.wordle.bundle = function(e) {
                     key: "setDarkTheme",
                     value: function(e) {
                         var a = document.querySelector("body");
-                        e && !a.classList.contains("nightmode") ? a.classList.add("nightmode") : a.classList.remove("nightmode"), this.isDarkTheme = e, window.localStorage.setItem(j, JSON.stringify(e))
+                        if (e === true && !a.classList.contains("nightmode")) {
+                            a.classList.add("nightmode");
+                        } else {
+                            a.classList.remove("nightmode");
+                            this.isDarkTheme = e;
+                            return window.localStorage.setItem(j, JSON.stringify(e));
+                        }
                     }
                 }, {
                     key: "setColorBlindTheme",
