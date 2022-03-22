@@ -340,19 +340,13 @@ this.wordle = this.wordle || {}, this.wordle.bundle = function(e) {
                     var o = JSON.parse(window.localStorage.getItem(j)),
                         r = window.matchMedia("(prefers-color-scheme: dark)").matches,
                         i = JSON.parse(window.localStorage.getItem(S));
-                    return !0 === o || !1 === o ? e.setDarkTheme(r) : r && e.setDarkTheme(r), !0 !== i && !1 !== i || e.setColorBlindTheme(i), e
+                    return !0 === o || !1 === o ? e.setDarkTheme(o) : r && e.setDarkTheme(!0), !0 !== i && !1 !== i || e.setColorBlindTheme(i), e
                 }
                 return o(t, [{
                     key: "setDarkTheme",
                     value: function(e) {
                         var a = document.querySelector("body");
-                        if (e === true && !a.classList.contains("nightmode")) {
-                            a.classList.add("nightmode");
-                        } else {
-                            a.classList.remove("nightmode");
-                            this.isDarkTheme = e;
-                            return window.localStorage.setItem(j, JSON.stringify(e));
-                        }
+                        e && !a.classList.contains("nightmode") ? a.classList.add("nightmode") : a.classList.remove("nightmode"), this.isDarkTheme = e, window.localStorage.setItem(j, JSON.stringify(e))
                     }
                 }, {
                     key: "setColorBlindTheme",
